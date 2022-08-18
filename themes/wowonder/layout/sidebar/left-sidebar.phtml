@@ -1,0 +1,153 @@
+<?php if ($wo['loggedin'] == true && Wo_IsMobile() == false) { ?>
+<div class="left-sidebar">
+	<ul>
+		<!--<li>
+			<a href="<?php echo $wo['user']['url']; ?>" data-ajax="?link1=timeline&u=<?php echo $wo['user']['username'];?>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#047cac" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" /></svg> <?php echo $wo['lang']['my_profile'];?>
+			</a>
+		</li>-->
+
+		<li class="wow_side_post_fltr">
+			<a href="<?php echo Wo_SeoLink('index.php?link1=groups'); ?>" data-ajax="?link1=groups">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#047cac" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z"/></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/home.svg"> <?php echo $wo['lang']['news_feed'];?>
+			</a>
+			
+		</li>
+		
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=saved-posts');?>" data-ajax="?link1=saved-posts">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#673ab7" d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5C19,3.89 18.1,3 17,3Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/save.svg"> <?php echo $wo['lang']['saved_posts'];?>
+			</a>
+		</li>
+		<?php if ($wo['config']['popular_posts'] == 1) { ?>
+		<li>
+			<a href="<?php echo $wo['config']['site_url']; ?>/most_liked" data-ajax="?link1=most_liked">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#8d73cc" d="M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/popular.svg"> <?php echo TextForMode('popular_posts');?>
+			</a>
+		</li>
+		<?php } ?>
+
+		
+
+	
+		<?php if ($wo['config']['groups'] == 1) { ?>
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=groups'); ?>" data-ajax="?link1=groups">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#03A9F4" d="M5 3A2 2 0 0 0 3 5H5M7 3V5H9V3M11 3V5H13V3M15 3V5H17V3M19 3V5H21A2 2 0 0 0 19 3M3 7V9H5V7M7 7V11H11V7M13 7V11H17V7M19 7V9H21V7M3 11V13H5V11M19 11V13H21V11M7 13V17H11V13M13 13V17H17V13M3 15V17H5V15M19 15V17H21V15M3 19A2 2 0 0 0 5 21V19M7 19V21H9V19M11 19V21H13V19M15 19V21H17V19M19 19V21A2 2 0 0 0 21 19Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/group.svg"> <?php echo $wo['lang']['groups'];?>
+			</a>
+		</li>
+		<?php } ?>
+		<?php if ($wo['config']['pages'] == 1) { ?>
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=pages'); ?>" data-ajax="?link1=pages">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#f79f58" d="M14.4,6L14,4H5V21H7V14H12.6L13,16H20V6H14.4Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/page.svg"> <?php echo $wo['lang']['pages'];?>
+			</a>
+		</li>
+		<?php } ?>
+
+		
+		
+		<?php if ($wo['config']['classified'] == 1) { ?>
+		<li>
+		<?php if (Wo_IsUserPro($wo['user_profile']['is_pro']) === true) { 
+                      $user_pro_type = Wo_GetUserProType($wo['user_profile']['pro_type']);
+                      ?>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=products'); ?>" data-ajax="?link1=products">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#7d8250" d="M12,18H6V14H12M21,14V12L20,7H4L3,12V14H4V20H14V14H18V20H20V14M20,4H4V6H20V4Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/market.svg"> <?php echo $wo['lang']['market'];?>
+			</a>
+			<?php }else{ ?>
+                      <a href="<?php echo Wo_SeoLink('index.php?link1=go-pro');?>"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#7d8250" d="M12,18H6V14H12M21,14V12L20,7H4L3,12V14H4V20H14V14H18V20H20V14M20,4H4V6H20V4Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/market.svg"> <?php echo $wo['lang']['market'];?>
+                      <?php } ?>
+			</a>
+		</li>
+		<?php } ?>
+
+
+		<?php if ($wo['config']['classified'] == 1) { ?>
+		<li>
+		<?php if (Wo_IsUserPro($wo['user_profile']['is_pro']) === true) { 
+                      $user_pro_type = Wo_GetUserProType($wo['user_profile']['pro_type']);
+                      ?>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=furniture-products'); ?>" data-ajax="?link1=furniture-products">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#7d8250" d="M12,18H6V14H12M21,14V12L20,7H4L3,12V14H4V20H14V14H18V20H20V14M20,4H4V6H20V4Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/market.svg"> Furniture Market
+			</a>
+			<?php }else{ ?>
+                      <a href="<?php echo Wo_SeoLink('index.php?link1=go-pro');?>"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#7d8250" d="M12,18H6V14H12M21,14V12L20,7H4L3,12V14H4V20H14V14H18V20H20V14M20,4H4V6H20V4Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/market.svg"> Furniture Market</a>
+                      <?php } ?>
+		</li>
+		<?php } ?>
+
+        <li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=search?query=');?>" data-ajax="?link1=search">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#8BC34A" d="M14.19,14.19L6,18L9.81,9.81L18,6M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,10.9A1.1,1.1 0 0,0 10.9,12A1.1,1.1 0 0,0 12,13.1A1.1,1.1 0 0,0 13.1,12A1.1,1.1 0 0,0 12,10.9Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/explore.svg"> <?php echo $wo['lang']['explore'];?>
+			</a>
+		</li>
+						
+		<?php if ($wo['config']['job_system'] == 1) { ?>
+		<li>
+		<?php if (Wo_IsUserPro($wo['user_profile']['is_pro']) === true) { 
+                      $user_pro_type = Wo_GetUserProType($wo['user_profile']['pro_type']);
+                      ?>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=jobs'); ?>" data-ajax="?link1=jobs">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4caf50" d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/job.svg"> <?php echo $wo['lang']['jobs'];?>
+			</a>
+			<?php }else{ ?>
+                      <a href="<?php echo Wo_SeoLink('index.php?link1=go-pro');?>"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#4caf50" d="M10,2H14A2,2 0 0,1 16,4V6H20A2,2 0 0,1 22,8V19A2,2 0 0,1 20,21H4C2.89,21 2,20.1 2,19V8C2,6.89 2.89,6 4,6H8V4C8,2.89 8.89,2 10,2M14,6V4H10V6H14Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/job.svg"> <?php echo $wo['lang']['jobs'];?></a>
+                      <?php } ?>
+
+		</li>
+		<?php } ?>
+
+		
+		
+		<?php if ($wo['config']['find_friends'] == 1) { ?>
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=friends-nearby'); ?>" data-ajax="?link1=friends-nearby">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#b2c17c" d="M15.5,12C18,12 20,14 20,16.5C20,17.38 19.75,18.21 19.31,18.9L22.39,22L21,23.39L17.88,20.32C17.19,20.75 16.37,21 15.5,21C13,21 11,19 11,16.5C11,14 13,12 15.5,12M15.5,14A2.5,2.5 0 0,0 13,16.5A2.5,2.5 0 0,0 15.5,19A2.5,2.5 0 0,0 18,16.5A2.5,2.5 0 0,0 15.5,14M10,4A4,4 0 0,1 14,8C14,8.91 13.69,9.75 13.18,10.43C12.32,10.75 11.55,11.26 10.91,11.9L10,12A4,4 0 0,1 6,8A4,4 0 0,1 10,4M2,20V18C2,15.88 5.31,14.14 9.5,14C9.18,14.78 9,15.62 9,16.5C9,17.79 9.38,19 10,20H2Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/find.svg"> <?php echo $wo['lang']['find_friends'];?>
+			</a>
+		</li>
+		<?php } ?>
+		<?php if ($wo['config']['common_things'] == 1) { ?>
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=common_things'); ?>" data-ajax="?link1=common_things">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#ff5991" d="M15,2C16.94,2 18.59,2.7 19.95,4.05C21.3,5.41 22,7.06 22,9C22,10.56 21.5,11.96 20.58,13.2C19.64,14.43 18.44,15.27 16.97,15.7L17,15.38V15C17,12.81 16.23,10.93 14.65,9.35C13.07,7.77 11.19,7 9,7H8.63L8.3,7.03C8.73,5.56 9.57,4.36 10.8,3.42C12.04,2.5 13.44,2 15,2M9,8A7,7 0 0,1 16,15A7,7 0 0,1 9,22A7,7 0 0,1 2,15A7,7 0 0,1 9,8M9,10A5,5 0 0,0 4,15A5,5 0 0,0 9,20A5,5 0 0,0 14,15A5,5 0 0,0 9,10Z"></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/common.svg"> <?php echo $wo['lang']['common_things'];?>
+			</a>
+		</li>
+		<?php } ?>
+
+		
+
+		<?php if ($wo['config']['website_mode'] == 'linkedin') { ?>
+		<li>
+			<a href="<?php echo Wo_SeoLink('index.php?link1=open_to_work_posts'); ?>" data-ajax="?link1=open_to_work_posts">
+				<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #673AB7;"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg><img src="<?php echo $wo['config']['theme_url'];?>/img/sidebar/work.svg"> <?php echo $wo['lang']['open_to_work_posts'];?>
+			</a>
+		</li>
+		<?php } ?>
+	</ul>
+</div>
+<?php } ?>
+
+
+<?php if ($wo['config']['order_posts_by'] == 0) { ?>
+<script>
+function Wo_StorePosts(type) {
+  if (type > 1) {
+     return false;
+  }
+  if (type == 0) {
+	$('.order_all').addClass('active');
+	$('.order_people').removeClass('active');
+  } else {
+	$('.order_all').removeClass('active');
+	$('.order_people').addClass('active');
+  }
+  $('#posts-laoded').html('<div class="wo_loading_post"><div class="lightui1-shimmer"> <div class="_2iwr"></div> <div class="_2iws"></div> <div class="_2iwt"></div> <div class="_2iwu"></div> <div class="_2iwv"></div> <div class="_2iww"></div> <div class="_2iwx"></div> <div class="_2iwy"></div> <div class="_2iwz"></div> <div class="_2iw-"></div> <div class="_2iw_"></div> <div class="_2ix0"></div> </div></div><div class="wo_loading_post"><div class="lightui1-shimmer"> <div class="_2iwr"></div> <div class="_2iws"></div> <div class="_2iwt"></div> <div class="_2iwu"></div> <div class="_2iwv"></div> <div class="_2iww"></div> <div class="_2iwx"></div> <div class="_2iwy"></div> <div class="_2iwz"></div> <div class="_2iw-"></div> <div class="_2iw_"></div> <div class="_2ix0"></div> </div></div>');
+  $.get(Wo_Ajax_Requests_File() + '?f=update_order_by', {type:type}, function (data) {
+    if (data.status == 200) {
+      loadposts();
+    }
+  });
+}
+</script>
+<?php } ?>

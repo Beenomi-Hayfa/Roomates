@@ -1,0 +1,141 @@
+<div class="modal fade" id="second-form-modal" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="wow_pops_head">
+				<svg height="100px" preserveAspectRatio="none" version="1.1" viewBox="0 0 300 100" width="300px" xmlns="http://www.w3.org/2000/svg"><path d="M30.913,43.944c0,0,42.911-34.464,87.51-14.191c77.31,35.14,113.304-1.952,146.638-4.729 c48.654-4.056,69.94,16.218,69.94,16.218v54.396H30.913V43.944z" fill="currentColor" opacity="0.6"></path> <path d="M-35.667,44.628c0,0,42.91-34.463,87.51-14.191c77.31,35.141,113.304-1.952,146.639-4.729 c48.653-4.055,69.939,16.218,69.939,16.218v54.396H-35.667V44.628z" fill="currentColor" opacity="0.6"></path> <path d="M-34.667,62.998c0,0,56-45.667,120.316-27.839C167.484,57.842,197,41.332,232.286,30.428 c53.07-16.399,104.047,36.903,104.047,36.903l1.333,36.667l-372-2.954L-34.667,62.998z" fill="currentColor"></path></svg>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z"></path></svg></button>
+				<h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12,13A5,5 0 0,1 7,8H9A3,3 0 0,0 12,11A3,3 0 0,0 15,8H17A5,5 0 0,1 12,13M12,3A3,3 0 0,1 15,6H9A3,3 0 0,1 12,3M19,6H17A5,5 0 0,0 12,1A5,5 0 0,0 7,6H5C3.89,6 3,6.89 3,8V20A2,2 0 0,0 5,22H19A2,2 0 0,0 21,20V8C21,6.89 20.1,6 19,6Z"></path></svg> <?php echo $wo['lang']['sell_new_product'] ?></h4>
+			</div>
+			<form class="create-album-form form-horizontal" method="post">
+				<div class="modal-body">
+					<div class="app-general-alert setting-update-alert"></div>
+					
+					<div class="row">
+						<div class="col-md-6">
+							<div class="wow_form_fields">
+								<label for="Consumption"> Allowed consumption  </label>
+								<select name="type" id="type"> 
+
+                                    <option value ="1"> None </option>
+									<option value ="2"> Cigarette </option>
+									<option value ="3"> Alcohool </option>
+									<option value ="4"> Cigarette & Alcohool </option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-4">      
+                        <div class="wow_form_fields"> 
+								<label for="Guests"> Allowed Guests  </label>
+                        </div>
+                                    <input class="form-check-input"  type="checkbox" id="none"> None 
+                                    <input class="form-check-input" type="checkbox" id="Family"> Family       
+                                    <input class="form-check-input" type="checkbox" id="Family"> Friends     
+                                    <input class="form-check-input" type="checkbox" id="Family"> Partners   
+                                    <input class="form-check-input" type="checkbox" id="Family"> Colleagues   
+                                    <input  class="form-check-input" type="checkbox" id="Family"> Neighbors                                           								
+						</div>
+                    </div>
+					</div>
+
+					<div class="wow_form_fields">
+                            <div class="col-md-6">
+                                <div class="wow_form_fields">
+                                    <label for="name">  Allowed beings  </label>
+                                    <select name="type" id="type"> 
+
+                                        <option value ="1"> Pets </option>
+                                        <option value ="2"> Plants </option>
+                                        <option value ="3"> Pets & Plants </option>
+                                        <option value ="4"> None </option>
+                                    </select>
+                                </div>
+                            </div>					
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="wow_form_fields">
+                            <label for="name">  Mobility  </label>
+                            <select name="type" id="type"> 
+                                        <option value ="1"> None </option>
+                                        <option value ="2"> Car </option>
+                                        <option value ="3"> Van </option>
+                                        <option value ="4"> Bike </option>
+                                        <option value ="4"> Motorcycle </option>
+                                    </select>							
+						</div>
+
+                        </div>
+					</div>
+
+
+					<div class="wow_form_fields">
+                            <div class="col-md-6">
+                                <div class="wow_form_fields">
+                                    <label for="name">  Shared Items  </label>
+                                    <select>
+
+										<option value="1"> Food </option>
+										<option value="1"> Clothes </option>
+										<option value="1"> Furniture </option>
+										<option value="1"> Devices </option>
+										<option value="1"> Sanitary </option>
+										<option value="1"> Cleanings </option>
+
+
+
+									</select>
+                                 
+                                </div>
+                            </div>					
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<div class="wow_form_fields">
+                            <label for="name">  Mobility  </label>
+                            <select name="type" id="type"> 
+                                        <option value ="1"> None </option>
+                                        <option value ="2"> Car </option>
+                                        <option value ="3"> Van </option>
+                                        <option value ="4"> Bike </option>
+                                        <option value ="4"> Motorcycle </option>
+                                    </select>							
+						</div>
+
+                        </div>
+					</div>
+				
+              
+				<div class="modal-footer">
+                                                <a href="#" data-toggle="modal" data-dismiss="modal" data-target="#create-product-modal" data-backdrop="static" data-keyboard="false" class="btn btn-main btn-mat btn-mat-raised add_wow_loader"> Back </a>
+
+                                                <button type="submit" class="btn btn-main btn-mat btn-mat-raised add_wow_loader"> Publish </button> 
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	<?php 
+$js_array = json_encode($wo['products_sub_categories']);
+echo "var sub_categories_array = ". $js_array . ";\n";
+?>
+	function GetProductSubCategory(self) {
+		id = $(self).val();
+		$('.product_sub_category_class').slideUp();
+		var text = "";
+		if (typeof(sub_categories_array[id]) == 'undefined') {
+		    $('#product_sub_category').html('');
+		}
+		else{
+			$('.product_sub_category_class').slideDown();
+		   	sub_categories_array[id].forEach(function(entry) {
+				text = text + "<option value='"+entry.id+"'>"+entry.lang+"</option>";
+			});
+		    $('#product_sub_category').html(text);
+		}
+	}
+
+</script>
