@@ -43,33 +43,6 @@ CREATE TABLE `bank_receipts` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `broadcast`
---
-
-CREATE TABLE `broadcast` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `name` varchar(100) CHARACTER SET utf8 NOT NULL DEFAULT '',
-  `image` varchar(150) CHARACTER SET utf8 DEFAULT 'upload/photos/d-group.jpg',
-  `time` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `broadcast_users`
---
-
-CREATE TABLE `broadcast_users` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `broadcast_id` int(11) NOT NULL DEFAULT 0,
-  `time` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `wondertage_settings`
 --
 
@@ -153,31 +126,6 @@ CREATE TABLE `Wo_AdminInvitations` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Wo_Ads`
---
-
-CREATE TABLE `Wo_Ads` (
-  `id` int(11) NOT NULL,
-  `type` varchar(32) NOT NULL DEFAULT '',
-  `code` text DEFAULT NULL,
-  `active` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Wo_Ads`
---
-
-INSERT INTO `Wo_Ads` (`id`, `type`, `code`, `active`) VALUES
-(1, 'header', '', '0'),
-(2, 'sidebar', '', '0'),
-(4, 'footer', '', '0'),
-(5, 'post_first', '', '0'),
-(6, 'post_second', '', '0'),
-(7, 'post_third', '', '0');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Wo_Affiliates_Requests`
 --
 
@@ -193,27 +141,6 @@ CREATE TABLE `Wo_Affiliates_Requests` (
   `address` varchar(600) CHARACTER SET utf8 NOT NULL DEFAULT '',
   `status` int(11) NOT NULL DEFAULT 0,
   `time` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_AgoraVideoCall`
---
-
-CREATE TABLE `Wo_AgoraVideoCall` (
-  `id` int(11) NOT NULL,
-  `from_id` int(11) NOT NULL DEFAULT 0,
-  `to_id` int(11) NOT NULL DEFAULT 0,
-  `type` varchar(50) NOT NULL DEFAULT 'video',
-  `room_name` varchar(50) NOT NULL DEFAULT '0',
-  `time` int(11) NOT NULL DEFAULT 0,
-  `status` varchar(20) NOT NULL DEFAULT '',
-  `active` int(11) NOT NULL DEFAULT 0,
-  `called` int(11) NOT NULL DEFAULT 0,
-  `declined` int(11) NOT NULL DEFAULT 0,
-  `access_token` text CHARACTER SET utf8 DEFAULT NULL,
-  `access_token_2` text CHARACTER SET utf8 DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -374,155 +301,6 @@ CREATE TABLE `Wo_Blocks` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `Wo_Blog`
---
-
-CREATE TABLE `Wo_Blog` (
-  `id` int(11) NOT NULL,
-  `user` int(11) NOT NULL DEFAULT 0,
-  `title` varchar(120) NOT NULL DEFAULT '',
-  `content` text DEFAULT NULL,
-  `description` text DEFAULT NULL,
-  `posted` varchar(300) DEFAULT '0',
-  `category` int(255) DEFAULT 0,
-  `thumbnail` varchar(100) DEFAULT 'upload/photos/d-blog.jpg',
-  `view` int(11) DEFAULT 0,
-  `shared` int(11) DEFAULT 0,
-  `tags` varchar(300) DEFAULT '',
-  `active` enum('0','1') NOT NULL DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_BlogCommentReplies`
---
-
-CREATE TABLE `Wo_BlogCommentReplies` (
-  `id` int(11) NOT NULL,
-  `comm_id` int(11) NOT NULL DEFAULT 0,
-  `blog_id` int(11) NOT NULL DEFAULT 0,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `text` text DEFAULT NULL,
-  `likes` int(11) NOT NULL DEFAULT 0,
-  `posted` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_BlogComments`
---
-
-CREATE TABLE `Wo_BlogComments` (
-  `id` int(11) NOT NULL,
-  `blog_id` int(11) NOT NULL DEFAULT 0,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `text` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `likes` int(11) NOT NULL DEFAULT 0,
-  `posted` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_BlogMovieDisLikes`
---
-
-CREATE TABLE `Wo_BlogMovieDisLikes` (
-  `id` int(11) NOT NULL,
-  `blog_comm_id` int(20) NOT NULL DEFAULT 0,
-  `blog_commreply_id` int(20) NOT NULL DEFAULT 0,
-  `movie_comm_id` int(20) NOT NULL DEFAULT 0,
-  `movie_commreply_id` int(20) NOT NULL DEFAULT 0,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `blog_id` int(50) NOT NULL DEFAULT 0,
-  `movie_id` int(50) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_BlogMovieLikes`
---
-
-CREATE TABLE `Wo_BlogMovieLikes` (
-  `id` int(11) NOT NULL,
-  `blog_comm_id` int(20) NOT NULL DEFAULT 0,
-  `blog_commreply_id` int(20) NOT NULL DEFAULT 0,
-  `movie_comm_id` int(20) NOT NULL DEFAULT 0,
-  `movie_commreply_id` int(20) NOT NULL DEFAULT 0,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `blog_id` int(50) NOT NULL DEFAULT 0,
-  `movie_id` int(50) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Blogs_Categories`
---
-
-CREATE TABLE `Wo_Blogs_Categories` (
-  `id` int(11) NOT NULL,
-  `lang_key` varchar(160) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `Wo_Blogs_Categories`
---
-
-INSERT INTO `Wo_Blogs_Categories` (`id`, `lang_key`) VALUES
-(2, '1421'),
-(3, '1424'),
-(4, '1427'),
-(5, '1430'),
-(6, '1433'),
-(7, '1436'),
-(8, '1439'),
-(9, '1442'),
-(10, '1445'),
-(11, '1448'),
-(12, '1451'),
-(13, '1454'),
-(14, '1457'),
-(15, '1460'),
-(16, '1463'),
-(17, '1466'),
-(18, '1469');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Blog_Reaction`
---
-
-CREATE TABLE `Wo_Blog_Reaction` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `blog_id` int(11) NOT NULL DEFAULT 0,
-  `comment_id` int(11) NOT NULL DEFAULT 0,
-  `reply_id` int(11) NOT NULL DEFAULT 0,
-  `reaction` varchar(50) NOT NULL DEFAULT '',
-  `time` varchar(50) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Codes`
---
-
-CREATE TABLE `Wo_Codes` (
-  `id` int(11) NOT NULL,
-  `code` varchar(50) NOT NULL DEFAULT '',
-  `app_id` varchar(50) NOT NULL DEFAULT '',
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `time` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Wo_Colored_Posts`
@@ -1103,43 +881,6 @@ CREATE TABLE `Wo_Custom_Fields` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Wo_Egoing`
---
-
-CREATE TABLE `Wo_Egoing` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Einterested`
---
-
-CREATE TABLE `Wo_Einterested` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Einvited`
---
-
-CREATE TABLE `Wo_Einvited` (
-  `id` int(11) NOT NULL,
-  `event_id` int(11) NOT NULL,
-  `inviter_id` int(11) NOT NULL,
-  `invited_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Wo_Emails`
 --
 
@@ -1150,25 +891,6 @@ CREATE TABLE `Wo_Emails` (
   `subject` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
   `message` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Events`
---
-
-CREATE TABLE `Wo_Events` (
-  `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL DEFAULT '',
-  `location` varchar(300) NOT NULL DEFAULT '',
-  `description` text NOT NULL,
-  `start_date` date NOT NULL,
-  `start_time` time NOT NULL,
-  `end_date` date NOT NULL,
-  `end_time` time NOT NULL,
-  `poster_id` int(11) NOT NULL,
-  `cover` varchar(500) NOT NULL DEFAULT 'upload/photos/d-cover.jpg'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -1204,127 +926,6 @@ CREATE TABLE `Wo_Followers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Wo_Forums`
---
-
-CREATE TABLE `Wo_Forums` (
-  `id` int(11) NOT NULL,
-  `name` varchar(200) NOT NULL DEFAULT '',
-  `description` varchar(300) NOT NULL DEFAULT '',
-  `sections` int(11) NOT NULL DEFAULT 0,
-  `posts` int(11) NOT NULL DEFAULT 0,
-  `last_post` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_ForumThreadReplies`
---
-
-CREATE TABLE `Wo_ForumThreadReplies` (
-  `id` int(11) NOT NULL,
-  `thread_id` int(11) NOT NULL DEFAULT 0,
-  `forum_id` int(11) NOT NULL DEFAULT 0,
-  `poster_id` int(11) NOT NULL DEFAULT 0,
-  `post_subject` varchar(300) NOT NULL DEFAULT '',
-  `post_text` text NOT NULL,
-  `post_quoted` int(11) NOT NULL DEFAULT 0,
-  `posted_time` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Forum_Sections`
---
-
-CREATE TABLE `Wo_Forum_Sections` (
-  `id` int(11) NOT NULL,
-  `section_name` varchar(200) NOT NULL DEFAULT '',
-  `description` varchar(300) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Forum_Threads`
---
-
-CREATE TABLE `Wo_Forum_Threads` (
-  `id` int(11) NOT NULL,
-  `user` int(11) NOT NULL DEFAULT 0,
-  `views` int(11) NOT NULL DEFAULT 0,
-  `headline` varchar(300) NOT NULL DEFAULT '',
-  `post` text NOT NULL,
-  `posted` varchar(20) NOT NULL DEFAULT '0',
-  `last_post` int(11) NOT NULL DEFAULT 0,
-  `forum` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Funding`
---
-
-CREATE TABLE `Wo_Funding` (
-  `id` int(11) NOT NULL,
-  `hashed_id` varchar(100) NOT NULL DEFAULT '',
-  `title` varchar(100) NOT NULL DEFAULT '',
-  `description` varchar(600) NOT NULL DEFAULT '',
-  `amount` varchar(11) NOT NULL DEFAULT '0',
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `image` varchar(200) NOT NULL DEFAULT '',
-  `time` varchar(50) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Funding_Raise`
---
-
-CREATE TABLE `Wo_Funding_Raise` (
-  `id` int(11) NOT NULL,
-  `funding_id` int(11) NOT NULL DEFAULT 0,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `amount` varchar(11) NOT NULL DEFAULT '0',
-  `time` varchar(50) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Games`
---
-
-CREATE TABLE `Wo_Games` (
-  `id` int(11) NOT NULL,
-  `game_name` varchar(50) NOT NULL,
-  `game_avatar` varchar(100) NOT NULL,
-  `game_link` varchar(100) NOT NULL,
-  `active` enum('0','1') NOT NULL DEFAULT '1',
-  `time` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Games_Players`
---
-
-CREATE TABLE `Wo_Games_Players` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `game_id` int(11) NOT NULL DEFAULT 0,
-  `last_play` int(11) NOT NULL DEFAULT 0,
-  `active` enum('0','1') NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Wo_Gender`
 --
 
@@ -1336,18 +937,6 @@ CREATE TABLE `Wo_Gender` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `Wo_Gifts`
---
-
-CREATE TABLE `Wo_Gifts` (
-  `id` int(11) UNSIGNED NOT NULL,
-  `name` varchar(250) DEFAULT NULL,
-  `media_file` varchar(250) NOT NULL,
-  `time` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Wo_GroupAdmins`
@@ -4334,18 +3923,6 @@ CREATE TABLE `Wo_PinnedPosts` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `Wo_Pokes`
---
-
-CREATE TABLE `Wo_Pokes` (
-  `id` int(11) NOT NULL,
-  `received_user_id` int(11) NOT NULL DEFAULT 0,
-  `send_user_id` int(11) NOT NULL DEFAULT 0,
-  `dt` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Wo_Polls`
@@ -4619,22 +4196,6 @@ CREATE TABLE `Wo_RecentSearches` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Wo_Refund`
---
-
-CREATE TABLE `Wo_Refund` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `order_hash_id` varchar(100) NOT NULL DEFAULT '',
-  `pro_type` varchar(50) NOT NULL DEFAULT '',
-  `description` text DEFAULT NULL,
-  `status` int(11) NOT NULL DEFAULT 0,
-  `time` int(50) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Wo_Relationship`
 --
 
@@ -4692,18 +4253,6 @@ CREATE TABLE `Wo_Stickers` (
 
 -- --------------------------------------------------------
 
---
--- Table structure for table `Wo_Story_Seen`
---
-
-CREATE TABLE `Wo_Story_Seen` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `story_id` int(11) NOT NULL DEFAULT 0,
-  `time` varchar(20) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `Wo_Sub_Categories`
@@ -4814,19 +4363,6 @@ CREATE TABLE `Wo_UserAds_Data` (
   `views` int(15) NOT NULL DEFAULT 0,
   `spend` float UNSIGNED NOT NULL DEFAULT 0,
   `dt` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_UserCard`
---
-
-CREATE TABLE `Wo_UserCard` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `product_id` int(11) NOT NULL DEFAULT 0,
-  `units` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -5247,36 +4783,6 @@ CREATE TABLE `Wo_UserSkills` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Wo_UserStory`
---
-
-CREATE TABLE `Wo_UserStory` (
-  `id` int(11) NOT NULL,
-  `user_id` int(50) NOT NULL DEFAULT 0,
-  `title` varchar(100) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
-  `description` varchar(300) CHARACTER SET utf8mb4 NOT NULL DEFAULT '',
-  `posted` varchar(50) NOT NULL DEFAULT '',
-  `expire` varchar(100) DEFAULT '',
-  `thumbnail` varchar(100) NOT NULL DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_UserStoryMedia`
---
-
-CREATE TABLE `Wo_UserStoryMedia` (
-  `id` int(11) NOT NULL,
-  `story_id` int(30) NOT NULL DEFAULT 0,
-  `type` varchar(30) NOT NULL DEFAULT '',
-  `filename` text DEFAULT NULL,
-  `expire` varchar(100) DEFAULT ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Wo_UserTiers`
 --
 
@@ -5291,20 +4797,6 @@ CREATE TABLE `Wo_UserTiers` (
   `live_stream` int(11) NOT NULL DEFAULT 0,
   `time` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_User_Gifts`
---
-
-CREATE TABLE `Wo_User_Gifts` (
-  `id` int(11) NOT NULL,
-  `from` int(11) NOT NULL DEFAULT 0,
-  `to` int(11) NOT NULL DEFAULT 0,
-  `gift_id` int(11) NOT NULL DEFAULT 0,
-  `time` int(11) DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -5327,38 +4819,6 @@ CREATE TABLE `Wo_Verification_Requests` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Wo_VideoCalles`
---
-
-CREATE TABLE `Wo_VideoCalles` (
-  `id` int(11) NOT NULL,
-  `access_token` text DEFAULT NULL,
-  `access_token_2` text DEFAULT NULL,
-  `from_id` int(11) NOT NULL DEFAULT 0,
-  `to_id` int(11) NOT NULL DEFAULT 0,
-  `room_name` varchar(50) NOT NULL DEFAULT '',
-  `active` int(11) NOT NULL DEFAULT 0,
-  `called` int(11) NOT NULL DEFAULT 0,
-  `time` int(11) NOT NULL DEFAULT 0,
-  `declined` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `Wo_Votes`
---
-
-CREATE TABLE `Wo_Votes` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL DEFAULT 0,
-  `post_id` int(11) NOT NULL DEFAULT 0,
-  `option_id` int(11) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `Wo_Wonders`
 --
 
@@ -5372,37 +4832,6 @@ CREATE TABLE `Wo_Wonders` (
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `bank_receipts`
---
-ALTER TABLE `bank_receipts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `fund_id` (`fund_id`),
-  ADD KEY `created_at` (`created_at`),
-  ADD KEY `approved_at` (`approved_at`),
-  ADD KEY `approved` (`approved`),
-  ADD KEY `mode` (`mode`);
-
---
--- Indexes for table `broadcast`
---
-ALTER TABLE `broadcast`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `time` (`time`),
-  ADD KEY `user_id_2` (`user_id`),
-  ADD KEY `time_2` (`time`);
-
---
--- Indexes for table `broadcast_users`
---
-ALTER TABLE `broadcast_users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `broadcast_id` (`broadcast_id`),
-  ADD KEY `time` (`time`);
 
 --
 -- Indexes for table `wondertage_settings`
@@ -5432,13 +4861,6 @@ ALTER TABLE `Wo_AdminInvitations`
   ADD PRIMARY KEY (`id`),
   ADD KEY `code` (`code`(255));
 
---
--- Indexes for table `Wo_Ads`
---
-ALTER TABLE `Wo_Ads`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `active` (`active`),
-  ADD KEY `type` (`type`);
 
 --
 -- Indexes for table `Wo_Affiliates_Requests`
@@ -5452,14 +4874,6 @@ ALTER TABLE `Wo_Affiliates_Requests`
 --
 -- Indexes for table `Wo_AgoraVideoCall`
 --
-ALTER TABLE `Wo_AgoraVideoCall`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `from_id` (`from_id`),
-  ADD KEY `to_id` (`to_id`),
-  ADD KEY `type` (`type`),
-  ADD KEY `room_name` (`room_name`),
-  ADD KEY `time` (`time`),
-  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `Wo_Albums_Media`
@@ -5553,77 +4967,6 @@ ALTER TABLE `Wo_Blocks`
   ADD KEY `blocker` (`blocker`),
   ADD KEY `blocked` (`blocked`);
 
---
--- Indexes for table `Wo_Blog`
---
-ALTER TABLE `Wo_Blog`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user` (`user`),
-  ADD KEY `title` (`title`),
-  ADD KEY `category` (`category`),
-  ADD KEY `active` (`active`);
-
---
--- Indexes for table `Wo_BlogCommentReplies`
---
-ALTER TABLE `Wo_BlogCommentReplies`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `comm_id` (`comm_id`),
-  ADD KEY `blog_id` (`blog_id`),
-  ADD KEY `order1` (`comm_id`,`id`),
-  ADD KEY `order2` (`blog_id`,`id`),
-  ADD KEY `order3` (`user_id`,`id`);
-
---
--- Indexes for table `Wo_BlogComments`
---
-ALTER TABLE `Wo_BlogComments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `blog_id` (`blog_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `Wo_BlogMovieDisLikes`
---
-ALTER TABLE `Wo_BlogMovieDisLikes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `blog_comm_id` (`blog_comm_id`),
-  ADD KEY `movie_comm_id` (`movie_comm_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `blog_commreply_id` (`blog_commreply_id`),
-  ADD KEY `movie_commreply_id` (`movie_commreply_id`),
-  ADD KEY `blog_id` (`blog_id`),
-  ADD KEY `movie_id` (`movie_id`);
-
---
--- Indexes for table `Wo_BlogMovieLikes`
---
-ALTER TABLE `Wo_BlogMovieLikes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `blog_id` (`blog_comm_id`),
-  ADD KEY `movie_id` (`movie_comm_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `blog_commreply_id` (`blog_commreply_id`),
-  ADD KEY `movie_commreply_id` (`movie_commreply_id`),
-  ADD KEY `blog_id_2` (`blog_id`),
-  ADD KEY `movie_id_2` (`movie_id`);
-
---
--- Indexes for table `Wo_Blogs_Categories`
---
-ALTER TABLE `Wo_Blogs_Categories`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `lang_key` (`lang_key`);
-
---
--- Indexes for table `Wo_Blog_Reaction`
---
-ALTER TABLE `Wo_Blog_Reaction`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `blog_id` (`blog_id`),
-  ADD KEY `comment_id` (`comment_id`),
-  ADD KEY `reply_id` (`reply_id`);
 
 --
 -- Indexes for table `Wo_Codes`
@@ -5722,51 +5065,12 @@ ALTER TABLE `Wo_Custom_Fields`
   ADD KEY `active` (`active`);
 
 --
--- Indexes for table `Wo_Egoing`
---
-ALTER TABLE `Wo_Egoing`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `event_id` (`event_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `Wo_Einterested`
---
-ALTER TABLE `Wo_Einterested`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `event_id` (`event_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `Wo_Einvited`
---
-ALTER TABLE `Wo_Einvited`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `event_id` (`event_id`),
-  ADD KEY `inviter_id` (`invited_id`),
-  ADD KEY `inviter_id_2` (`inviter_id`);
-
---
 -- Indexes for table `Wo_Emails`
 --
 ALTER TABLE `Wo_Emails`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `email_to` (`email_to`);
-
---
--- Indexes for table `Wo_Events`
---
-ALTER TABLE `Wo_Events`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `poster_id` (`poster_id`),
-  ADD KEY `name` (`name`),
-  ADD KEY `start_date` (`start_date`),
-  ADD KEY `start_time` (`start_time`),
-  ADD KEY `end_time` (`end_time`),
-  ADD KEY `end_date` (`end_date`),
-  ADD KEY `order1` (`poster_id`,`id`),
-  ADD KEY `order2` (`id`);
 
 --
 -- Indexes for table `Wo_Family`
@@ -5793,87 +5097,11 @@ ALTER TABLE `Wo_Followers`
   ADD KEY `time` (`time`);
 
 --
--- Indexes for table `Wo_Forums`
---
-ALTER TABLE `Wo_Forums`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `name` (`name`),
-  ADD KEY `description` (`description`(255)),
-  ADD KEY `posts` (`posts`);
-
---
--- Indexes for table `Wo_ForumThreadReplies`
---
-ALTER TABLE `Wo_ForumThreadReplies`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `thread_id` (`thread_id`),
-  ADD KEY `forum_id` (`forum_id`),
-  ADD KEY `poster_id` (`poster_id`),
-  ADD KEY `post_subject` (`post_subject`(255)),
-  ADD KEY `post_quoted` (`post_quoted`),
-  ADD KEY `posted_time` (`posted_time`);
-
---
--- Indexes for table `Wo_Forum_Sections`
---
-ALTER TABLE `Wo_Forum_Sections`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `section_name` (`section_name`),
-  ADD KEY `description` (`description`(255));
-
---
--- Indexes for table `Wo_Forum_Threads`
---
-ALTER TABLE `Wo_Forum_Threads`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user` (`user`),
-  ADD KEY `views` (`views`),
-  ADD KEY `posted` (`posted`),
-  ADD KEY `headline` (`headline`(255)),
-  ADD KEY `forum` (`forum`);
-
---
--- Indexes for table `Wo_Funding`
---
-ALTER TABLE `Wo_Funding`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `hashed_id` (`hashed_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `Wo_Funding_Raise`
---
-ALTER TABLE `Wo_Funding_Raise`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `funding_id` (`funding_id`);
-
---
--- Indexes for table `Wo_Games`
---
-ALTER TABLE `Wo_Games`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `active` (`active`);
-
---
--- Indexes for table `Wo_Games_Players`
---
-ALTER TABLE `Wo_Games_Players`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`,`game_id`,`active`);
-
---
 -- Indexes for table `Wo_Gender`
 --
 ALTER TABLE `Wo_Gender`
   ADD PRIMARY KEY (`id`),
   ADD KEY `gender_id` (`gender_id`);
-
---
--- Indexes for table `Wo_Gifts`
---
-ALTER TABLE `Wo_Gifts`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `Wo_GroupAdmins`
@@ -6063,33 +5291,6 @@ ALTER TABLE `Wo_Messages`
   ADD KEY `listening` (`listening`);
 
 --
--- Indexes for table `Wo_MovieCommentReplies`
---
-ALTER TABLE `Wo_MovieCommentReplies`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `comm_id` (`comm_id`),
-  ADD KEY `movie_id` (`movie_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `Wo_MovieComments`
---
-ALTER TABLE `Wo_MovieComments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `movie_id` (`movie_id`),
-  ADD KEY `user_id` (`user_id`);
-
---
--- Indexes for table `Wo_Movies`
---
-ALTER TABLE `Wo_Movies`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `name` (`name`),
-  ADD KEY `genre` (`genre`),
-  ADD KEY `country` (`country`),
-  ADD KEY `release` (`release`);
-
---
 -- Indexes for table `Wo_Mute`
 --
 ALTER TABLE `Wo_Mute`
@@ -6104,17 +5305,6 @@ ALTER TABLE `Wo_Mute`
   ADD KEY `notify` (`notify`),
   ADD KEY `type` (`type`),
   ADD KEY `fav` (`fav`);
-
---
--- Indexes for table `Wo_Mute_Story`
---
-ALTER TABLE `Wo_Mute_Story`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `story_user_id` (`story_user_id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `time` (`time`),
-  ADD KEY `user_id_2` (`user_id`),
-  ADD KEY `story_user_id_2` (`story_user_id`);
 
 --
 -- Indexes for table `Wo_Notifications`
@@ -6210,32 +5400,6 @@ ALTER TABLE `Wo_Pages_Likes`
   ADD KEY `page_id` (`page_id`);
 
 --
--- Indexes for table `Wo_PatreonSubscribers`
---
-ALTER TABLE `Wo_PatreonSubscribers`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `subscriber_id` (`subscriber_id`),
-  ADD KEY `time` (`time`);
-
---
--- Indexes for table `Wo_Payments`
---
-ALTER TABLE `Wo_Payments`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `date` (`date`);
-
---
--- Indexes for table `Wo_Payment_Transactions`
---
-ALTER TABLE `Wo_Payment_Transactions`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `userid` (`userid`),
-  ADD KEY `kind` (`kind`),
-  ADD KEY `transaction_dt` (`transaction_dt`);
-
---
 -- Indexes for table `Wo_PinnedPosts`
 --
 ALTER TABLE `Wo_PinnedPosts`
@@ -6245,14 +5409,6 @@ ALTER TABLE `Wo_PinnedPosts`
   ADD KEY `active` (`active`),
   ADD KEY `page_id` (`page_id`),
   ADD KEY `group_id` (`group_id`);
-
---
--- Indexes for table `Wo_Pokes`
---
-ALTER TABLE `Wo_Pokes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `received_user_id` (`received_user_id`),
-  ADD KEY `user_id` (`send_user_id`);
 
 --
 -- Indexes for table `Wo_Polls`
@@ -6400,14 +5556,6 @@ ALTER TABLE `Wo_RecentSearches`
   ADD KEY `user_id` (`user_id`,`search_id`),
   ADD KEY `search_type` (`search_type`);
 
---
--- Indexes for table `Wo_Refund`
---
-ALTER TABLE `Wo_Refund`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `pro_type` (`pro_type`),
-  ADD KEY `status` (`status`);
 
 --
 -- Indexes for table `Wo_Relationship`
@@ -6445,14 +5593,6 @@ ALTER TABLE `Wo_SavedPosts`
 --
 ALTER TABLE `Wo_Stickers`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `Wo_Story_Seen`
---
-ALTER TABLE `Wo_Story_Seen`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `story_id` (`story_id`);
 
 --
 -- Indexes for table `Wo_Sub_Categories`
@@ -6650,22 +5790,6 @@ ALTER TABLE `Wo_UserSkills`
   ADD KEY `name` (`name`);
 
 --
--- Indexes for table `Wo_UserStory`
---
-ALTER TABLE `Wo_UserStory`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `expires` (`expire`);
-
---
--- Indexes for table `Wo_UserStoryMedia`
---
-ALTER TABLE `Wo_UserStoryMedia`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `expire` (`expire`),
-  ADD KEY `story_id` (`story_id`);
-
---
 -- Indexes for table `Wo_UserTiers`
 --
 ALTER TABLE `Wo_UserTiers`
@@ -6675,40 +5799,12 @@ ALTER TABLE `Wo_UserTiers`
   ADD KEY `live_stream` (`live_stream`);
 
 --
--- Indexes for table `Wo_User_Gifts`
---
-ALTER TABLE `Wo_User_Gifts`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `from` (`from`),
-  ADD KEY `to` (`to`),
-  ADD KEY `gift_id` (`gift_id`);
-
---
 -- Indexes for table `Wo_Verification_Requests`
 --
 ALTER TABLE `Wo_Verification_Requests`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user_id` (`user_id`),
   ADD KEY `page_id` (`page_id`);
-
---
--- Indexes for table `Wo_VideoCalles`
---
-ALTER TABLE `Wo_VideoCalles`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `to_id` (`to_id`),
-  ADD KEY `from_id` (`from_id`),
-  ADD KEY `called` (`called`),
-  ADD KEY `declined` (`declined`);
-
---
--- Indexes for table `Wo_Votes`
---
-ALTER TABLE `Wo_Votes`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`),
-  ADD KEY `post_id` (`post_id`),
-  ADD KEY `option_id` (`option_id`);
 
 --
 -- Indexes for table `Wo_Wonders`
@@ -6722,24 +5818,6 @@ ALTER TABLE `Wo_Wonders`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `bank_receipts`
---
-ALTER TABLE `bank_receipts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `broadcast`
---
-ALTER TABLE `broadcast`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `broadcast_users`
---
-ALTER TABLE `broadcast_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `wondertage_settings`
@@ -6769,12 +5847,6 @@ ALTER TABLE `Wo_Ads`
 -- AUTO_INCREMENT for table `Wo_Affiliates_Requests`
 --
 ALTER TABLE `Wo_Affiliates_Requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_AgoraVideoCall`
---
-ALTER TABLE `Wo_AgoraVideoCall`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -6844,48 +5916,6 @@ ALTER TABLE `Wo_Blocks`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Wo_Blog`
---
-ALTER TABLE `Wo_Blog`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_BlogCommentReplies`
---
-ALTER TABLE `Wo_BlogCommentReplies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_BlogComments`
---
-ALTER TABLE `Wo_BlogComments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_BlogMovieDisLikes`
---
-ALTER TABLE `Wo_BlogMovieDisLikes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_BlogMovieLikes`
---
-ALTER TABLE `Wo_BlogMovieLikes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Blogs_Categories`
---
-ALTER TABLE `Wo_Blogs_Categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `Wo_Blog_Reaction`
---
-ALTER TABLE `Wo_Blog_Reaction`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
-
---
 -- AUTO_INCREMENT for table `Wo_Codes`
 --
 ALTER TABLE `Wo_Codes`
@@ -6951,23 +5981,6 @@ ALTER TABLE `Wo_CustomPages`
 ALTER TABLE `Wo_Custom_Fields`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `Wo_Egoing`
---
-ALTER TABLE `Wo_Egoing`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Einterested`
---
-ALTER TABLE `Wo_Einterested`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Einvited`
---
-ALTER TABLE `Wo_Einvited`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Wo_Emails`
@@ -6975,11 +5988,6 @@ ALTER TABLE `Wo_Einvited`
 ALTER TABLE `Wo_Emails`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `Wo_Events`
---
-ALTER TABLE `Wo_Events`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Wo_Family`
@@ -6991,54 +5999,6 @@ ALTER TABLE `Wo_Family`
 -- AUTO_INCREMENT for table `Wo_Followers`
 --
 ALTER TABLE `Wo_Followers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Forums`
---
-ALTER TABLE `Wo_Forums`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_ForumThreadReplies`
---
-ALTER TABLE `Wo_ForumThreadReplies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Forum_Sections`
---
-ALTER TABLE `Wo_Forum_Sections`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Forum_Threads`
---
-ALTER TABLE `Wo_Forum_Threads`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Funding`
---
-ALTER TABLE `Wo_Funding`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Funding_Raise`
---
-ALTER TABLE `Wo_Funding_Raise`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Games`
---
-ALTER TABLE `Wo_Games`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Games_Players`
---
-ALTER TABLE `Wo_Games_Players`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -7162,24 +6122,6 @@ ALTER TABLE `Wo_Messages`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Wo_MovieCommentReplies`
---
-ALTER TABLE `Wo_MovieCommentReplies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_MovieComments`
---
-ALTER TABLE `Wo_MovieComments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Movies`
---
-ALTER TABLE `Wo_Movies`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `Wo_Mute`
 --
 ALTER TABLE `Wo_Mute`
@@ -7239,11 +6181,6 @@ ALTER TABLE `Wo_Pages_Invites`
 ALTER TABLE `Wo_Pages_Likes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `Wo_PatreonSubscribers`
---
-ALTER TABLE `Wo_PatreonSubscribers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Wo_Payments`
@@ -7252,21 +6189,9 @@ ALTER TABLE `Wo_Payments`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `Wo_Payment_Transactions`
---
-ALTER TABLE `Wo_Payment_Transactions`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `Wo_PinnedPosts`
 --
 ALTER TABLE `Wo_PinnedPosts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Pokes`
---
-ALTER TABLE `Wo_Pokes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -7335,11 +6260,6 @@ ALTER TABLE `Wo_Reactions_Types`
 ALTER TABLE `Wo_RecentSearches`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `Wo_Refund`
---
-ALTER TABLE `Wo_Refund`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Wo_Relationship`
@@ -7365,11 +6285,6 @@ ALTER TABLE `Wo_SavedPosts`
 ALTER TABLE `Wo_Stickers`
   MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `Wo_Story_Seen`
---
-ALTER TABLE `Wo_Story_Seen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Wo_Sub_Categories`
@@ -7407,11 +6322,6 @@ ALTER TABLE `Wo_UserAds`
 ALTER TABLE `Wo_UserAds_Data`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT for table `Wo_UserCard`
---
-ALTER TABLE `Wo_UserCard`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `Wo_UserCertification`
@@ -7501,18 +6411,6 @@ ALTER TABLE `Wo_User_Gifts`
 -- AUTO_INCREMENT for table `Wo_Verification_Requests`
 --
 ALTER TABLE `Wo_Verification_Requests`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_VideoCalles`
---
-ALTER TABLE `Wo_VideoCalles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `Wo_Votes`
---
-ALTER TABLE `Wo_Votes`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
